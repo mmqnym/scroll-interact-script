@@ -1,8 +1,8 @@
-### Scroll Bridge Script
+### Scroll Interact Script
 
-這是 Scroll 官方橋的自動化跨鏈腳本
+這是 Scroll 鏈上的自動化交互腳本
 
-**請先修改設定檔再執行。以下為設定檔說明，單位都是以太：**
+**請先修改設定檔再執行。以下為設定檔說明，金額單位都是以太：**
 
 ```json
 {
@@ -38,8 +38,8 @@
 
   2. 運行
      - 切到腳本目錄或在腳本目錄裡打開終端(cd `<path>`)
-     - 輸入 `docker build -t "scroll-bridge-script:v1.0" .`
-     - 輸入 `docker run --name scroll-bridge-script scroll-bridge-script:v1.0`
+     - 輸入 `docker build -t "scroll-interact-script:v1.0" .`
+     - 輸入 `docker run --name scroll-interact-script scroll-interact-script:v1.0`
      - ※你可以在 docker desktop 上的 container 看到運行中的腳本，運行完畢後可以在該處刪除，請務必刪除，以避免下次使用腳本時發生讀到舊資料的問題。
 
 <br/>
