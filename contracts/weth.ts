@@ -7,7 +7,7 @@ const WETH = {
         const contract = new ethers.Contract(config.wethContract, wethContractABI, signer);
 
         try {
-            const tx = await contract.deposit({ value: value, gasLimit: 51892 });
+            const tx = await contract.deposit({ value: value });
             console.log(`Pending: https://scrollscan.com/tx/${tx.hash}`);
             await tx.wait();
             console.log(`Confirmed.`);
@@ -21,7 +21,7 @@ const WETH = {
         const contract = new ethers.Contract(config.wethContract, wethContractABI, signer);
 
         try {
-            const tx = await contract.withdraw(wad, { gasLimit: 42789 });
+            const tx = await contract.withdraw(wad);
             console.log(`Pending: https://scrollscan.com/tx/${tx.hash}`);
             await tx.wait();
             console.log(`Confirmed.`);

@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 import WETH from "../contracts/weth";
 import SyncSwap from "../contracts/syncswap";
-import { delay, getRandomTimeInterval } from "../utils/local";
+import { delay, getRandomAmount, getRandomTimeInterval } from "../utils/local";
 
 async function doTasks() {
     const tasks = [
@@ -27,7 +27,17 @@ async function doTasks() {
             console.log(`### Private key: ${privateKey.slice(0, 4)}...${privateKey.slice(-4)}`);
             console.log(`### Address: ${signer.address}`);
             console.log(`### Balance: ${currentBalance} ETH\n`);
-            requireInterupt = await task(signer);
+
+            let amount = config.amount;
+
+            if (config.useRandomAmount) {
+                amount = getRandomAmount();
+                console.log(`### Use random amount: ${amount} ETH\n`);
+            } else {
+                console.log(`### Use fixed amount: ${amount} ETH\n`);
+            }
+
+            requireInterupt = await task(signer, amount);
 
             if (requireInterupt) {
                 console.error("Something went wrong. Task queue is interrupted.");
@@ -40,9 +50,9 @@ async function doTasks() {
     }
 }
 
-async function batchWrapETH(signer: ethers.Wallet): Promise<boolean> {
+async function batchWrapETH(signer: ethers.Wallet, amount: number): Promise<boolean> {
     console.log("### Start to wrap ETH.");
-    const holdedWETHValue = await WETH.deposit(signer, ethers.parseEther(config.amount.toString()));
+    const holdedWETHValue = await WETH.deposit(signer, ethers.parseEther(amount.toString()));
 
     if (holdedWETHValue === BigInt(-1)) {
         console.error("Failed to wrap ETH.");
@@ -70,9 +80,9 @@ async function batchWrapETH(signer: ethers.Wallet): Promise<boolean> {
     return false;
 }
 
-async function batchSyncSwap(signer: ethers.Wallet): Promise<boolean> {
+async function batchSyncSwap(signer: ethers.Wallet, amount: number): Promise<boolean> {
     console.log("### Start to swap ETH for USDC.");
-    const holdedUSDCValue = await SyncSwap.swapETHForUSDC(signer, ethers.parseEther(config.amount.toString()));
+    const holdedUSDCValue = await SyncSwap.swapETHForUSDC(signer, ethers.parseEther(amount.toString()));
 
     if (holdedUSDCValue === BigInt(-1)) {
         console.error("Failed to swap ETH for USDC.");
