@@ -7,16 +7,16 @@
 ```json
 {
   "privateKeys": [
-    "YOUR_PRIVATE_KEY_HERE" // 填入你的私鑰，如果要添加更多，就是在每行後面放個, 然後跨行打 "新私鑰"
+    "5f6aa015fe9f517dbc1ee2083fbc6996c707f6b525dc2641498fbfe06baacc51" // 填入你的私鑰，如果要添加更多，就是在每行後面放個, 然後跨行打 "新私鑰"
   ],
   "amount": 0.01, // 填入你每筆交易要使用的以太數量
   "useRandomAmount": false, // 如果設為 true，每筆交易會使用不同的以太數量，數量介於下面兩個數值之間
-  "randomAmountMin": 0.02, // 隨機以太數量最小值
-  "randomAmountMax": 0.05, // 隨機以太數量最大值
+  "randomAmountMin": 0.003, // 隨機以太數量最小值
+  "randomAmountMax": 0.01, // 隨機以太數量最大值
   "txIntervalMin": 60, // 每筆交易的間隔時間最小值，以秒為單位
   "txIntervalMax": 200, // 每筆交易的間隔時間最大值，以秒為單位
   "rpcURL": "https://rpc.scroll.io/",
-  "coinMarketsCapApiKey": "", // 你的 CoinMarketCap API KEY
+  "coinMarketsCapApiKey": "4710ee9e-5a13-43fd-8523-2ccffa726c15", // 你的 CoinMarketCap API KEY
   "syncswapRouterContract": "0x80e38291e06339d10aab483c65695d004dbd5c69",
   "wethContract": "0x5300000000000000000000000000000000000004",
   "usdcContract": "0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4"
