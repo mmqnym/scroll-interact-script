@@ -3,12 +3,15 @@
 這是 Scroll 鏈上的自動化交互腳本
 
 **請先修改設定檔再執行。以下為設定檔說明，金額單位都是以太：**
+把 `example_config.json` 的 `example_` 刪掉，再更改下面設定的數值。
+※ // ... 是註解，請不要在你的設定中加入這些東西，JSON 檔案本身不能有註解，這個只是用於說明。
 
 ```json
 {
   "privateKeys": [
     "YOUR_PRIVATE_KEY_HERE" // 填入你的私鑰，如果要添加更多，就是在每行後面放個, 然後跨行打 "新私鑰"
   ],
+  "repeatCount": 3, // 整輪任務（所有私鑰跑一輪）重複執行的次數
   "amount": 0.01, // 填入你每筆交易要使用的以太數量
   "useRandomAmount": false, // 如果設為 true，每筆交易會使用不同的以太數量，數量介於下面兩個數值之間
   "randomAmountMin": 0.02, // 隨機以太數量最小值
@@ -40,7 +43,8 @@
      - 切到腳本目錄或在腳本目錄裡打開終端(cd `<path>`)
      - 輸入 `docker build -t "scroll-interact-script:v1.0" .`
      - 輸入 `docker run --name scroll-interact-script scroll-interact-script:v1.0`
-     - ※你可以在 docker desktop 上的 container 看到運行中的腳本，運行完畢後可以在該處刪除，請務必刪除，以避免下次使用腳本時發生讀到舊資料的問題。
+     - ※你可以在 docker desktop 上的 `container` 看到運行中的腳本，運行完畢後可以在該處刪除，請務必刪除，以避免下次使用腳本時發生讀到舊資料的問題。
+     - ※如果你變更了 `config.json` 的設定，請把 `image` 以及 `container` 都刪掉。如果只是要重跑相同設定的任務把 `container` 刪掉就可以重跑了。
 
 <br/>
 
