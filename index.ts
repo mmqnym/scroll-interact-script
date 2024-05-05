@@ -9,6 +9,12 @@ function configCheck(): boolean {
         return false;
     }
 
+    // Check repeat count
+    if (!config.repeatCount || config.repeatCount <= 0) {
+        console.error("Invalid repeat count provided.");
+        return false;
+    }
+
     // Check input amount
     if (!config.amount || config.amount <= 0) {
         console.error("Invalid amount provided.");
@@ -54,8 +60,12 @@ async function main() {
     }
 
     console.log("### Precheck OK.");
+    console.log("### The tasks will be executed [" + config.repeatCount + "] times.");
 
-    await doTasks();
+    for (let i = 0; i < config.repeatCount; i++) {
+        console.log("### The repeatation [" + (i + 1) + "] is about to start.");
+        await doTasks();
+    }
     console.log("### The batch has been done.");
 }
 

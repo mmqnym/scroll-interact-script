@@ -1,0 +1,17 @@
+{
+    "privateKeys": [
+        "YOUR_PRIVATE_KEY_HERE"
+    ],
+    "repeatCount": 3,
+    "amount": 0.01,
+    "useRandomAmount": true,
+    "randomAmountMin": 0.02,
+    "randomAmountMax": 0.05,
+    "txIntervalMin": 60,
+    "txIntervalMax": 200,
+    "rpcURL": "https://rpc.scroll.io/",
+    "coinMarketsCapApiKey": "",
+    "syncswapRouterContract": "0x80e38291e06339d10aab483c65695d004dbd5c69",
+    "wethContract": "0x5300000000000000000000000000000000000004",
+    "usdcContract": "0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4"
+}
